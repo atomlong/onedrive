@@ -9,7 +9,7 @@ arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/skilion/onedrive'
 license=('GPL3')
 depends=('curl' 'gcc-libs' 'glibc' 'sqlite')
-makedepends=('dmd')
+makedepends=('ldc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/skilion/onedrive/archive/v$pkgver.tar.gz")
 sha256sums=('c6ef18c5798ce70c32843f2bed73600af5ad342fd20239c973887e9e751a35b6')
 
@@ -19,7 +19,7 @@ prepare() {
 }
 
 build() {
-  make PREFIX=/usr -C $pkgname-$pkgver
+  make DC=ldmd2 PREFIX=/usr -C $pkgname-$pkgver
 }
 
 package() {
